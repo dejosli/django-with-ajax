@@ -15,41 +15,36 @@
     <title>Django with Ajax</title>
 
     <style>
-        .container{
+        .container {
             padding-top: 2vw;
-            padding-bottom: 4vw;
-        }
-        .container-sm {
-            padding-left: 18vw;
-            padding-right: 18vw;
+            padding-bottom: 2vw;
         }
     </style>
 </head>
 
 <body>
-    
+
     <div class="container text-center">
         <h2>Django with Ajax</h2>
         <h5>A Single Page Application</h5>
     </div>
 
-
-    <!-- form begin -->
     <div class="container-sm">
-        {% block form %}
-        <!-- content -->
-        {% endblock form %}
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <h4 class="text-center">Registration</h4><br>
+                <!-- form -->
+                {% block form %}
+                {% endblock form %}
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-8">
+                <h4 class="text-center">Data Table</h4><br>
+                <!-- table -->
+                {% block table %}
+                {% endblock table %}
+            </div>
+        </div>
     </div>
-    <!-- form end -->
-
-    <!-- table begin -->
-    <div class="container-md">
-        {% block table %}
-        <!-- content -->
-        {% endblock table %}
-    </div>
-    <!-- table end -->
-
 
     <!-- jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js">
@@ -61,10 +56,9 @@
     <!-- Bootstrap Table javascript -->
     <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
 
-    <!-- ajax with vanila javascript -->
-    <script>
-
-    </script>
+    {% block script %}
+    <!-- content -->
+    {% endblock script %}
 
 </body>
 

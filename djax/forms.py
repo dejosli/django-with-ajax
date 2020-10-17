@@ -1,26 +1,36 @@
 from django import forms
-
-STATES = (
-    ('', 'Choose...'),
-    ('MG', 'Minas Gerais'),
-    ('SP', 'Sao Paulo'),
-    ('RJ', 'Rio de Janeiro')
-)
+from .models import Address
+from django.utils.translation import gettext_lazy as _
 
 
-class AddressForm(forms.Form):
-    email = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder': 'Email'}))
-    password = forms.CharField(widget=forms.PasswordInput())
-    address_1 = forms.CharField(
-        label='Address',
-        widget=forms.TextInput(attrs={'placeholder': '1234 Main St'})
-    )
-    address_2 = forms.CharField(
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Apartment, studio, or floor'})
-    )
-    city = forms.CharField()
-    state = forms.ChoiceField(choices=STATES)
-    zip_code = forms.CharField(label='Zip')
-    check_me_out = forms.BooleanField(required=False)
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        fields = '__all__'
+        labels = {
+            'address_1': _('Present Address'),
+            'address_2': _('Permanent Address'),
+            'zip_code': _('Zip'),
+        }
+        widgets = {
+            'email': forms.TextInput(attrs={
+                'placeholder': 'Email',
+                'required': True,
+            }),
+            'password': forms.PasswordInput(attrs={
+                'required': True,
+            }),
+            'address_1': forms.TextInput(attrs={
+                'label': 'Present Address',
+                'placeholder': '1234 Main St',
+                'required': True
+            }),
+            'address_2': forms.TextInput(attrs={
+                'placeholder': 'Apartment, studio, or floor',
+                'required': True
+            }),
+            'zip_code': forms.TextInput(attrs={
+                'required': True
+            }),
+            'check_me_out': forms.CheckboxInput(),
+        }
