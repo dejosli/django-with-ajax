@@ -28,41 +28,14 @@
     {{ form.check_me_out|as_crispy_field }}
     <button type="submit" class="btn btn-primary">Sign in</button>
 </form>
+
 {% endblock form %}
 
 {% block table %}
 
-<table class="table">
-    <caption>List of users</caption>
-    <thead>
-        <tr>
-            <th scope="col">SL</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
-    </tbody>
-</table>
+<div id="display-table">
+    <!-- data table -->
+</div>
 
 {% endblock table %}
 
@@ -80,22 +53,54 @@
 
             $.ajax({
                 type: 'POST',
-                url: "{% url 'address-create-view' %}",
+                url: "{% url 'create-view' %}",
                 data: serializedData,
+                dataType: 'json',
                 success: function (response) {
                     //reset the form after successful submit
                     $("#address-form")[0].reset();
                     console.log(response);
                 },
                 error: function (response) {
-                    console.log(response)
+                    console.log(response);
                 }
             });
         });
     });
 
-    // rendering form data into table with ajax
-    
+    $(document).ready(function () {
+
+        // rendering form data into table with ajax
+        var displayTable = $("#display-table");
+
+        $.ajax({
+            type: 'GET',
+            url: "{% url 'retrieve_view' %}",
+            dataType: 'json',
+            success: function (response) {
+                var parsed = $.parseJSON(response.data);
+                var output =
+                    "<table class='table'><thead><tr><th scope='col'>SL</th><th scope='col'>Email</th><th scope='col'>Present Address</th><th scope='col'>Permanet Address</th><th scope='col'>City</th><th scope='col'>Zip</th></tr></thead><tbody>";
+
+                for (var i in parsed) {
+                    output +=
+                        "<tr><th scope='row'>" + parsed[i]['pk'] + "</th><td>" + parsed[i]['fields']
+                        ['email'] + "</td><td>" + parsed[i]['fields']['address_1'] + "</td><td>" +
+                        parsed[i]['fields']['address_2'] + "</td><td>" + parsed[i]['fields'][
+                            'city'
+                        ] + "</td><td>" + parsed[i]['fields']['zip_code'] + "</td></tr>";
+                }
+
+                output += "</tbody></table>";
+
+                displayTable.html(output);
+
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
+    });
 </script>
 
 {% endblock script %}

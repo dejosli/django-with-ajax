@@ -1,0 +1,100 @@
+[
+    {
+       "model": "djax.address",
+       "pk": 1,
+       "fields": {
+          "email": "abid",
+          "password": "diphasan0044",
+          "address_1": "1100 elephant road, dhaka",
+          "address_2": "1100 elephant road, dhaka",
+          "city": "khulna",
+          "state": "SP",
+          "zip_code": "5756",
+          "check_me_out": true
+       }
+    },
+    {
+       "model": "djax.address",
+       "pk": 2,
+       "fields": {
+          "email": "josli",
+          "password": "jolajoifajo",
+          "address_1": "1100 elephant road, dhaka",
+          "address_2": "1100 elephant road, dhaka",
+          "city": "khulna",
+          "state": "SP",
+          "zip_code": "5756",
+          "check_me_out": false
+       }
+    },
+    {
+       "model": "djax.address",
+       "pk": 3,
+       "fields": {
+          "email": "kamrul",
+          "password": "diphasan0044",
+          "address_1": "1100 elephant road, dhaka",
+          "address_2": "1100 elephant road, dhaka",
+          "city": "khulna",
+          "state": "RJ",
+          "zip_code": "42747",
+          "check_me_out": true
+       }
+    },
+    {
+       "model": "djax.address",
+       "pk": 4,
+       "fields": {
+          "email": "rochy",
+          "password": "diphasan0044",
+          "address_1": "1100 elephant road, dhaka",
+          "address_2": "1100 elephant road, dhaka",
+          "city": "khulna",
+          "state": "RJ",
+          "zip_code": "5756",
+          "check_me_out": true
+       }
+    },
+    {
+       "model": "djax.address",
+       "pk": 5,
+       "fields": {
+          "email": "abid@gmail.com",
+          "password": "hello",
+          "address_1": "1100 elephant road, dhaka",
+          "address_2": "1100 elephant road, dhaka",
+          "city": "khulna",
+          "state": "SP",
+          "zip_code": "5756",
+          "check_me_out": true
+       }
+    },
+    {
+       "model": "djax.address",
+       "pk": 6,
+       "fields": {
+          "email": "sollimullah",
+          "password": "iamsolimulllah",
+          "address_1": "1100 elephant road, dhaka",
+          "address_2": "1100 elephant road, dhaka",
+          "city": "khulna",
+          "state": "SP",
+          "zip_code": "5756",
+          "check_me_out": false
+       }
+    },
+    {
+       "model": "djax.address",
+       "pk": 7,
+       "fields": {
+          "email": "aksh",
+          "password": "tytdfhjf",
+          "address_1": "1100 elephant road, dhaka",
+          "address_2": "1100 elephant road, dhaka",
+          "city": "khulna",
+          "state": "SP",
+          "zip_code": "5756",
+          "check_me_out": false
+       }
+    }
+ ]
